@@ -119,7 +119,10 @@ func (fd *FailureDetector) Heartbeat() error {
 	newState := State{History: history, LatestTimestamp: timestamp}
 	swapped := fd.state.CompareAndSwap(oldState, newState)
 	if !swapped {
-		fd.Heartbeat()
+		err := fd.Heartbeat()
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil

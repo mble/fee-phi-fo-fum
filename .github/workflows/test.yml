@@ -8,8 +8,7 @@ jobs:
     strategy:
       matrix:
         go-version: [1.17.x]
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: install go
         uses: actions/setup-go@331ce1d993939866bb63c32c6cbbfd48fa76fc57
